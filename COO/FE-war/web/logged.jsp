@@ -10,6 +10,15 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Car sharing</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+
+		<!-- Optional theme -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+
+		<!-- Latest compiled and minified JavaScript -->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+
     </head>
     
     <%--Add jQuery library (remote)--%>
@@ -83,13 +92,16 @@
         }
     %>
     
+	
+	
+	<div class="container">
     <center> <h1>SMART CAR SHARING</h1> </center>
     
     <h2>Welcome : <%= session.getAttribute("uname") %></h2>
     
     <body>        
         <center>
-            <table border="1" width="1000" id="table1">
+            <table class="table table-striped table-hover table-bordered" id="table1">
                 <tr>
                     <th>Offer id    </th>
                     <th>Car id      </th>
@@ -105,27 +117,27 @@
         <br>
         
 	<form id="offerForm">
-            <h2>Add Offer:</h2>
-            Insert your car id: <input type="text" id="CarID_OfferForm"/>
-            <input type="button" value="Add Offer" id="button1"/>
+		<div class="form-group">
+			<label for="CarID_OfferForm">Add Offer:</label>
+			<input type="text" id="CarID_OfferForm" class="form-control"  placeholder="Insert your car id:">
+		</div>
+        <input type="button" class="btn btn-success" value="Add Offer" id="button1"/>
 	</form>
         
         <form id="reservationForm">
             <h2>Reservation seat: </h2>
+				
+			<div class="form-group">
+				<label for="offerID">Insert Offer ID</label>
+				<input type="text" id="offerID" class="form-control"  placeholder="Insert Offer ID">
+			</div>
+			<div class="form-group">
+				<label for="passengerID">Insert Passenger ID:</label>
+				<input type="text" id="passengerID" class="form-control"  placeholder="Insert Passenger ID:">
+			</div>
+				
             
-            <table>
-                <tbody>
-                    <tr>
-                        <td>Insert Offer ID: </td>
-                        <td><input type="text" id="offerID"/></td>
-                    </tr>
-                    <tr>
-                        <td>Insert Passenger ID: </td>
-                        <td><input type="text" id="passengerID"/></td>
-                    </tr>
-                </tbody>
-            </table>
-            <input type="button" value="Add Reservation" id="button2"/>          
+            <input type="button" class="btn btn-success" value="Add Reservation" id="button2"/>          
 	</form>
       
         <br>
@@ -134,5 +146,6 @@
             <h2>Status bar</h2>
             <p id="status"></p>
         </div>
+	</div>	
     </body>
 </html>
