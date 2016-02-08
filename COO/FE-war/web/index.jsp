@@ -19,6 +19,13 @@
 		  padding-top: 40px;
 		  padding-bottom: 40px;
 		  background-color: #eee;
+                  
+                  background-image: url("image/carsharing_opacity.png");
+                  background-position: 10% 10%;
+                  background-repeat: no-repeat;
+                  /*background-attachment: fixed;*/
+                  background-size: cover;
+                  font-family:  'Oswald', sans-serif;
 		}
 
 		.form-signin {
@@ -55,34 +62,33 @@
 		  border-top-left-radius: 0;
 		  border-top-right-radius: 0;
 		}
-	
-	
+                .form-signin-heading {
+                    text-align: center;
+                }    
 	</style>
 	
 	</head>
     <body>
+        <% if(request.getParameter("logout")!=null) session.invalidate(); %>
 	
-	
-	
-	
-	<div class="container">
+        <div class="container" >
 
-      <form class="form-signin" action="FE_Servlet" method="POST">
-        <h2 class="form-signin-heading">Car sharing java EE</h2>
-        <label for="inputuname" class="sr-only">Username</label>
-        <input type="text" name="uname" id="inputuname" class="form-control" placeholder="Username" required autofocus>
-        <label for="inputPassword" class="sr-only">Password</label>
-        <input type="password"  name="password" id="inputPassword" class="form-control" placeholder="Password" required>
-        <div class="checkbox">
-          <label>
-            <input type="checkbox" value="ricordami"> Ricordami
-          </label>
-        </div>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" >Login</button>
-      </form>
+          <form class="form-signin" action="FE_Servlet" method="POST">
+            <h2 class="form-signin-heading">Car Sharing</h2>
+            <label for="inputuname" class="sr-only">Username</label>
+            <input type="text" name="uname" id="inputuname" class="form-control" placeholder="Username" required autofocus>
+            <label for="inputPassword" class="sr-only">Password</label>
+            <input type="password"  name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" value="ricordami"> Ricordami
+                </label>
+            </div>
+            <button class="btn btn-lg btn-primary btn-block" type="submit" >Login</button>
+          </form>
 
-    </div> <!-- /container -->
-
+        </div> <!-- /container -->
+ 
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>

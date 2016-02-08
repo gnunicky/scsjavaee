@@ -31,9 +31,13 @@ public class FE_Servlet extends HttpServlet {
         String uname = request.getParameter("uname");
         String password = request.getParameter("password");
         
-        //Qua si fa con un Session bean che lo va a veridicare nel database
-        if((uname.equalsIgnoreCase("admin") && password.equalsIgnoreCase("admin")) ||
-           (uname.equalsIgnoreCase("leandro") && password.equalsIgnoreCase("leandro")))
+        //Qua si potrebbe fare con un session bean che va a verificare i nomi nel DB
+        if((uname.equalsIgnoreCase("admin")     && password.equalsIgnoreCase("admin"))     ||
+           (uname.equalsIgnoreCase("leandro")   && password.equalsIgnoreCase("leandro"))   ||
+            uname.equalsIgnoreCase("nicola")    && password.equalsIgnoreCase("nicola")     ||
+            uname.equalsIgnoreCase("salvatore") && password.equalsIgnoreCase("salvatore")  ||
+            uname.equalsIgnoreCase("daniele")   && password.equalsIgnoreCase("daniele")    ||
+            uname.equalsIgnoreCase("antonella") && password.equalsIgnoreCase("antonella"))
         {
             HttpSession session=request.getSession();
             session.setAttribute("uname",uname);

@@ -18,7 +18,7 @@ import javax.servlet.http.HttpSession;
 
 /**
  *
- * @author Leandro
+ * @author Russo , Didomenico e Delpopolo
  */
 public class FE_Servlet_Logged extends HttpServlet {
 
@@ -59,10 +59,6 @@ public class FE_Servlet_Logged extends HttpServlet {
                 int clientID=COO.createSession(session.getId());
                 tag=COO.addOffer(clientID,OfferCarID);
                 checkAvailableData(tag,response);
-
-                /*try (PrintWriter out = response.getWriter()) {
-                    out.println("<h3>"+resp+"</h3>");
-                }*/
             }
             if(offerID!=null && passengerID!=null){
                 int clientID=COO.createSession(session.getId());
