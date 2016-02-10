@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Car sharing login</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<!-- Latest compiled and minified CSS -->
@@ -66,11 +66,37 @@
                     text-align: center;
                 }    
 	</style>
-	
-	</head>
+    
+    </head>
+    
     <body>
-        <% if(request.getParameter("logout")!=null) session.invalidate(); %>
-	
+        
+        <% HttpSession mySession=request.getSession(); %>
+        
+        <% String logout=request.getParameter("logout");%>
+        
+        <% String login=request.getParameter("login");%>
+        
+        <% if(logout!=null){mySession.invalidate();}%>
+        
+        <%= (login!=null && login.equals("failed")) ?
+            "<script>"+
+                "alert('Username o password errati!');"+
+                "window.location.href = 'index.jsp';"+
+            "</script>"
+            :
+            ""
+        %>
+        
+        <%= (login!=null && login.equals("lostSession")) ?
+            "<script>"+
+                "alert('La sessione ? stata persa! Effettua nuovamente il login..');"+
+                "window.location.href = 'index.jsp';"+
+            "</script>"
+            :
+            ""
+        %>
+        
         <div class="container" >
 
           <form class="form-signin" action="FE_Servlet" method="POST">

@@ -33,7 +33,7 @@
                                     url : 'FE_Servlet_Logged',
                                     type: 'POST',
                                     data : {
-                                        table1 : $('#table1').val()
+                                        typeRequest:'GET_DB'
                                     },
                                     success : function(responseText) {
                                         $('#table1').append(responseText);
@@ -53,6 +53,7 @@
                                     url : 'FE_Servlet_Logged',
                                     type: 'POST',
                                     data : {
+                                        typeRequest:'ADD_OFFER',
                                         CarID_OfferForm : $('#CarID_OfferForm').val()
                                     },
                                     success : function(responseText) {
@@ -64,7 +65,7 @@
             });
         </script>
  
-        <%--JQUERY add offer asynch call --%>
+        <%--JQUERY add Reservetion asynch call --%>
         <script>
             $(document).ready(function() {
                     $('#button2').click(function() {
@@ -72,6 +73,7 @@
                                     url : 'FE_Servlet_Logged',
                                     type: 'POST',
                                     data : {
+                                        typeRequest:'ADD_RESERVATION',
                                         offerID : $('#offerID').val(),
                                         passengerID : $('#passengerID').val()
                                     },
@@ -83,21 +85,21 @@
                     });
             });
         </script>
-    
-    
-    
-        <% 
-            if(session==null){
-                request.getRequestDispatcher("index.html").forward(request,response);
-            }
-        %>
-
-        <%String uname=(String)session.getAttribute("uname");%>
-        
+            
     </head>
 	
 	
-    <body>	
+    <body>
+        
+        <%HttpSession mySession=request.getSession(); %>
+        
+        <% String uname=(String)mySession.getAttribute("uname"); %>
+        
+        <% 
+            if(mySession==null || uname==null){
+                request.getRequestDispatcher("index.jsp?login=lostSession").forward(request,response);
+            }
+        %>
 		
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
@@ -105,7 +107,7 @@
                     <li><a href="#"><span class="glyphicon glyphicon-user"></span> <%=uname%></a></li>
                 </ul>
 		<ul class="nav navbar-nav">
-		  <li><a href="../FE-war/logged.jsp">Home</a></li>      
+		  <li><a href="logged.jsp">Home</a></li>      
 		  <li class="active"><a href="../FaultDetector/">Fault Detector</a></li>
 		</ul>
                 <ul class="nav navbar-nav navbar-right">

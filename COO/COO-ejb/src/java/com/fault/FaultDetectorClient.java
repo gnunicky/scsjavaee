@@ -59,7 +59,7 @@ public class FaultDetectorClient{
     @Timeout
     public void sendHeartBeat(Timer t){
         HeartBeat hb=new HeartBeat(processName,heartbeatRate,++seq);
-        System.out.println("COO SEND: "+hb);
+        //System.out.println("COO SEND: "+hb);
         ConnectionUDP connection=new ConnectionUDP(address,port);
         try{
             connection.send(hb);
